@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <!-- css -->
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <!-- ros2djs -->
+
+    <!-- roslib -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/easeljs@1/lib/easeljs.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/eventemitter2@6/lib/eventemitter2.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/roslib@1/build/roslib.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/ros2d@0/build/ros2d.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/nipplejs/0.7.3/nipplejs.js"></script>
+
+
+
+
+    <!-- roslibNav -->
+    <script type="text/javascript" src="https://unpkg.com/nav2d/dist/nav2d_deps.min.js"></script>
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- websocket-->
+    <script src="https://cdn.jsdelivr.net/npm/stompjs/lib/stomp.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+
+    <!--    <script src="/js/rosWebSocket.js"></script>-->
+    <script src="/js/roslisb.js"></script>
+    <link rel="icon" href="localhost:8080/favicon.ico" type="image/x-icon">
+
+</head>
+<body>
+
+
+<h1>Simple ROS User Interface</h1>
+<p>Connection status: <span id="status"></span></p>
+<p>Last /txt_msg received: <span id="msg"></span></p>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span12">
+            <div class="row-fluid">
+                <button class="btn btn-default btn-xlarge" role="submit" onclick="move('LocationOne')">LocationOne</button>
+                <button class="btn btn-default btn-xlarge" role="submit" onclick="move('LocationTwo')">LocationTwo</button>
+                <button class="btn btn-default btn-xlarge" role="submit" onclick="move('LocationThree')">LocationThree</button>
+                <button class="btn btn-default btn-xlarge" role="submit" onclick="move('LocationFour')">LocationFour</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="zone_joystick" style="width:200px; height: 200px;display: flex;justify-content: center;align-items: center;"></div>
+<div id="map"></div>
+<div id="nav"></div>
+<div id="alerts">
+</div>
+<div class="joystick-container">
+    <div id="joystick"></div>
+</div>
+<div class="wrapper">
+    <div class="poseWrapper">
+        <h1>Initial Pose</h1>
+        <input type="checkbox" id="initialPoseswitch">
+        <label for="initialPoseswitch" class="switch_label">
+            <span class="onf_btn"></span>
+        </label>
+    </div>
+    <div class="poseWrapper">
+        <h1>Goal Pose</h1>
+        <input type="checkbox" id="goalPoseswitch">
+        <label for="goalPoseswitch" class="switch_label">
+            <span class="onf_btn"></span>
+        </label>
+    </div>
+</div>
+<p style="color:green">X:<span id="x"></span></p>
+<p style="color:blue">Y:<span id="y"></span></p>
+
+</body>
+</html>
