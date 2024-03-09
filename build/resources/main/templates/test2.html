@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robot Path Visualization</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+            cursor: crosshair;
+        }
+    </style>
+</head>
+<body>
+<canvas id="canvas" width="600" height="400"></canvas>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get the canvas element
+        var canvas = document.getElementById('canvas');
+        var ctx = canvas.getContext('2d');
+
+        // Set initial variables
+        var isDrawing = false;
+        var pathColor = 'blue'; // Change this color as needed
+        var path = [];
+
+        // Function to draw the path
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.strokeStyle = pathColor;
+            ctx.lineWidth = 3;
+            ctx.lineJoin = 'round';
+            ctx.beginPath();
+            ctx.moveTo(path[0].x, path[0].y);
+            for (var i = 1; i < path.length; i++) {
+                ctx.lineTo(path[i].x, path[i].y);
+            }
+            ctx.stroke();
+        }
+
+        // Mouse down event listener
+        canvas.addEventListener('mousedown', function(event) {
+            isDrawing = true;
+            path.push({x: event.offsetX, y: event.offsetY});
+            draw();
+        });
+
+        // Mouse move event listener
+        canvas.addEventListener('mousemove', function(event) {
+            if (isDrawing) {
+                path.push({x: event.offsetX, y: event.offsetY});
+                draw();
+            }
+        });
+
+        // Mouse up event listener
+        canvas.addEventListener('mouseup', function() {
+            isDrawing = false;
+        });
+
+        // Mouse leave event listener
+        canvas.addEventListener('mouseleave', function() {
+            isDrawing = false;
+        });
+
+        // Clear button event listener
+        document.getElementById('clearButton').addEventListener('click', function() {
+            path = [];
+            draw();
+        });
+    });
+</script>
+
+<button id="clearButton">Clear Path</button>
+
+</body>
+</html>
